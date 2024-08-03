@@ -57,7 +57,6 @@ public class WorkoutController {
 			workout.setDurationText(durationText);
 		});
 		model.addAttribute("workouts", workouts);
-		model.addAttribute("users", userService.fetchAll());
 		model.addAttribute("createWorkout", new CreateWorkout());
 		return "workouts";
 	}
@@ -131,18 +130,15 @@ public class WorkoutController {
 		List<User> users = userService.fetchAll();
 		List<WorkoutType> types = Arrays.asList(WorkoutType.values());
 		Faker faker = new Faker();
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			LocalDateTime startDateTime = LocalDateTime.now().minusMinutes(faker.number().randomNumber(2, true));
-
 			LocalDateTime endDateTime = LocalDateTime.now().minusMinutes(faker.number().numberBetween(1, 3));
-
 			if (endDateTime.isBefore(startDateTime)) {
 				continue;
 			}
 
 			Collections.shuffle(users);
 			Collections.shuffle(types);
-
 			WorkoutDto workoutDto = WorkoutDto.builder()
 				.id(KeyGenerator.next("wk_"))
 				.title(faker.weather().description() + " - " + faker.address().streetAddress() + ", "
@@ -154,7 +150,6 @@ public class WorkoutController {
 				.startTime(Date.from(startDateTime.toInstant(ZoneOffset.UTC)))
 				.endTime(Date.from(endDateTime.toInstant(ZoneOffset.UTC)))
 				.build();
-
 			workoutService.create(workoutDto);
 		}
 		attributes.addFlashAttribute("message", "Generated dummy workout!");

@@ -1,11 +1,11 @@
 # Building a Fitness Tracker Web using Spring Boot and GridDB
+[<img src="blog/heartrate-dashboard.png" width="550"/>](blog/heartrate-dashboard.png)
 
 > **Connect** with me through [Upwork](https://www.upwork.com/freelancers/~018d8a1d9dcab5ac61), [LinkedIn](https://linkedin.com/in/alifruliarso), [Email](mailto:alif.ruliarso@gmail.com), [Twitter](https://twitter.com/alifruliarso)
 
 ## Technology Stack
-Spring Boot, Docker, Thymeleaf, Maven\
+Spring Boot, Docker, Thymeleaf, Maven, [Apache ECharts](https://echarts.apache.org/en/index.html)\
 Database: GridDB 5.5.0
-
 
 ## Run Application with Docker Compose
 
@@ -42,8 +42,7 @@ The website available at http://localhost:8080
 
 **Format code**
   ```shell
-  mvn spring-javaformat:apply
-  mvn impsort:sort
+  mvn spring-javaformat:apply & mvn impsort:sort
    ```
 
 **Sort Import**
